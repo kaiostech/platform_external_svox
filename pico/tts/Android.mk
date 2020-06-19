@@ -22,7 +22,8 @@ LOCAL_SHARED_LIBRARIES := \
 	libcutils \
 	libexpat \
 	libutils \
-	liblog
+	liblog \
+	libandroid_runtime
 
 LOCAL_ARM_MODE := arm
 
@@ -43,9 +44,12 @@ LOCAL_SRC_FILES := \
 
 LOCAL_C_INCLUDES += \
 	external/svox/pico/lib \
-	external/svox/pico/compat/include
+	external/svox/pico/compat/include \
+	external/expat/lib
+
+LOCAL_CFLAGS += -Wno-error
 
 LOCAL_STATIC_LIBRARIES := libsvoxpico
-LOCAL_SHARED_LIBRARIES := libcutils libexpat libutils liblog
+LOCAL_SHARED_LIBRARIES := libcutils libexpat libutils liblog libandroid_runtime
 
 include $(BUILD_SHARED_LIBRARY)

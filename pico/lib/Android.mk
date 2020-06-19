@@ -36,7 +36,8 @@ LOCAL_SRC_FILES := \
 	picotrns.c \
 	picowa.c
 
-LOCAL_CFLAGS+= $(TOOL_CFLAGS)
+
+LOCAL_CFLAGS += -Wno-error
 LOCAL_LDFLAGS+= $(TOOL_LDFLAGS)
 
 include $(BUILD_STATIC_LIBRARY)
