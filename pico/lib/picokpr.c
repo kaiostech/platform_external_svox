@@ -345,12 +345,12 @@ extern picoos_int32 picokpr_getAttrValArrInt32(picokpr_Preproc preproc, picokpr_
     picoos_uint32 c =              p[KPR_ATTRVAL_INT_OFS] +
                                256*p[KPR_ATTRVAL_INT_OFS+1] +
                            256*256*p[KPR_ATTRVAL_INT_OFS+2] +
-                       256*256*256*p[KPR_ATTRVAL_INT_OFS+3];
+                       256*256*256*(p[KPR_ATTRVAL_INT_OFS+3]&0x7f);
 
     if (c > KPR_MAX_INT32) {
         return (c - KPR_MAX_INT32) - 1;
     } else {
-        return (((int)c + (int) -(KPR_MAX_INT32)) - 1);
+        return ((int)c);
     }
 }
 
@@ -402,12 +402,12 @@ extern picoos_int32 picokpr_getOutItemVal(picokpr_Preproc preproc, picokpr_OutIt
     picoos_uint32 c =  p[KPR_OUTITEM_VAL_OFS+0] +
                    256*p[KPR_OUTITEM_VAL_OFS+1] +
                256*256*p[KPR_OUTITEM_VAL_OFS+2] +
-           256*256*256*p[KPR_OUTITEM_VAL_OFS+3];
+           256*256*256*(p[KPR_ATTRVAL_INT_OFS+3]&0x7f);
 
     if (c > KPR_MAX_INT32) {
         return (c - KPR_MAX_INT32) - 1;
     } else {
-        return (((int)c + (int) -(KPR_MAX_INT32)) - 1);
+        return ((int)c);
     }
 }
 
@@ -555,13 +555,13 @@ extern picoos_int32 picokpr_getProdPrefCost(picokpr_Preproc preproc, picokpr_Pro
     picoos_uint32 c =  p[KPR_PROD_PRODPREFCOST_OFS+0] +
                    256*p[KPR_PROD_PRODPREFCOST_OFS+1] +
                256*256*p[KPR_PROD_PRODPREFCOST_OFS+2] +
-           256*256*256*p[KPR_PROD_PRODPREFCOST_OFS+3];
+           256*256*256*(p[KPR_ATTRVAL_INT_OFS+3]&0x7f);
 
 
     if (c > KPR_MAX_INT32) {
         return (c - KPR_MAX_INT32) - 1;
     } else {
-        return (((int)c + (int) -(KPR_MAX_INT32)) - 1);
+        return ((int)c);
     }
 }
 
